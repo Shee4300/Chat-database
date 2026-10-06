@@ -16,6 +16,14 @@ main()
 async function main() {
     await mongoose.connect('mongodb://127.0.0.1:27017/whatsapp');
 }
+//Indexx route
+app.get("/chats", async (req, res) => {
+    let chats = await Chat.find();
+    console.log(chats);
+    res.send("working");
+});
+
+
 let chat1 = new Chat({
     from: "neha",
     to: "priya",
