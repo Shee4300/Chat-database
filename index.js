@@ -38,10 +38,17 @@ app.post("/chats", (req, res) => {
         to: to,
         msg: msg,
         created_at: new Date()
-    })
-    console.log(newChat);
-    res.send("working");
+    });
+    newChat
+        .save()
+        .then((res) => {
+            console.log("chat was saved");
+        })
+        .catch((err) => {
+            console.log("err");
+        });
 
+    res.redirect("/chats");
 });
 
 let chat1 = new Chat({
